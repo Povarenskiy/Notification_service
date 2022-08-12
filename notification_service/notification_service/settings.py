@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
+import logging
 
 from pathlib import Path
 
@@ -128,6 +129,44 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+
+    'formatters': {
+        'main_format': {
+            'format': '[{module} {asctime} {levelname}] {message}',
+            'style': '{'
+        }
+    },
+
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'main_format'
+        },
+
+        'file': {
+            'class': 'logging.FileHandler',
+            'formatter': 'main_format',
+            'filename': 'information.log'
+        }
+    },
+
+    'loggers': {
+        'mailing_app': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+            'propagate': True
+        }
+    }
+}
+
+
+
+
 
 URL = 'https://probe.fbrq.cloud/v1/send/'
 TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjEcd2OTEyMzUyOTksImlzcyI6ImZhYnJpcXVlIiwibmFtZSI6IlJvbWFuIFBvdmFyZW5za2l5In0.QCRMXXFW2bdGFWnd8FDiypuU3Z6FGM4bTQv62o0Fic0'
