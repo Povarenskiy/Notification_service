@@ -169,4 +169,4 @@ LOGGING = {
 
 
 URL = 'https://probe.fbrq.cloud/v1/send/'
-TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjEcd2OTEyMzUyOTksImlzcyI6ImZhYnJpcXVlIiwibmFtZSI6IlJvbWFuIFBvdmFyZW5za2l5In0.QCRMXXFW2bdGFWnd8FDiypuU3Z6FGM4bTQv62o0Fic0'
+TOKEN = ''
