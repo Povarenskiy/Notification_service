@@ -29,11 +29,11 @@ def send_message(data, start, end, url=settings.URL, token=settings.TOKEN, attem
                 raise send_message(data, start, end, attempt=attempt)
             else:
                 Message.objects.filter(pk=data['id']).update(status='Sent')
-                logger.info(f"The message id: {data['id']} sent'")
+                logger.info(f"The message id: {data['id']} sent to phone number: {data['phone number']}")
         else:
             sleeping_time = (start - now) / timedelta(seconds=1)
             logger.info(f"Sending a message id: {data['id']} is registered, sending via {sleeping_time} s")
             time.sleep(sleeping_time)
-            send_message(data, start, end)
+            return send_message(data, start, end)
     else:
         logger.info(f"The time for sending the message id: {data['id']} has expired")
