@@ -2,6 +2,7 @@
 
 Сервис разработан на Django REST framefork
 
+
 ## Установка и запуск
 
 1. Склонировать репозиторий с Github.com:
@@ -26,7 +27,7 @@ source venv/bin/activate - для Linux и MacOS
 pip install -r requirements.txt
 ````
 
-6. Применить мигра в базу данных
+6. Создать и применить миграции в базу данных
 ````
 python manage.py makemigrations
 python manage.py migrate
