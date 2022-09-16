@@ -20,7 +20,7 @@ python -m venv venv
 venv\Scripts\activate.bat - для Windows
 source venv/bin/activate - для Linux и MacOS
 ````
-4. В файле .evn заполнить необходимые данные 
+4. В файле .evn заполнить необходимые данные ```TOKEN = '<your token>'```
 
 5. Установка зависимостей
 ````
