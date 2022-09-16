@@ -20,8 +20,8 @@ python -m venv venv
 venv\Scripts\activate.bat - для Windows
 source venv/bin/activate - для Linux и MacOS
 ````
+4. В файле .evn заполнить необходимые данные 
 
-4. В файле settings.py указать личный токен: ```` TOKEN = '<личный токен>' ````
 5. Установка зависимостей
 ````
 pip install -r requirements.txt
@@ -37,6 +37,16 @@ python manage.py migrate
 ````
 python manage.py runserver
 ````
+9. Запустить Redis 
+````
+docker run --name celery-redis -d -p 6379:6379 redis
+````
+
+8. Запустить Celery
+````
+celery -A notification_service worker -l info -P gevent
+````
+
 
 ## Api
 

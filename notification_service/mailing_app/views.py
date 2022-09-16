@@ -28,10 +28,10 @@ class MailingView(ModelViewSet):
 
         for row in mailing:
             message = Message.objects.filter(mailing_id=row.id).all()
-            unsent = message.filter(status='Unsent').count()
+            not_sent = message.filter(status='Not sent').count()
             sent = message.filter(status='Sent').count()
 
-            message_stat = {'Number of sent messages': sent, 'Number of unsent messages': unsent}
+            message_stat = {'Number of sent messages': sent, 'Number of Not sent messages': not_sent}
             res[f'id = {row.id}'] = message_stat
 
         content['Statistic for Mailing'] = res
