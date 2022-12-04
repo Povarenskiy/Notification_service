@@ -1,0 +1,33 @@
+version: "3.9"
+   
+services:
+
+  redis:
+    image: redis
+    restart: always
+
+
+  web:
+    restart: always
+    build: .
+    volumes:
+     - .:/code/ 
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+
+  celery:
+    build:
+      context: .
+    command: "celery -A notification_service worker -l info "
+    restart: always
+    volumes:
+     - .:/code/ 
+
+  celery-beat:
+    build:
+      context: .
+    command: 'celery -A notification_service beat -l info'
+    restart: always
+    volumes:
+     - .:/code/ 
