@@ -10,7 +10,7 @@ Cервис управления рассылками API администрир
 
 1. Склонировать репозиторий с Github.com:
 ````
-https://github.com/Povarenskiy/notification_service.git
+git clone https://github.com/Povarenskiy/notification_service.git
 ````
 2. В файле .evn заполнить необходимые данные
 ```
