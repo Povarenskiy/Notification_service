@@ -167,6 +167,11 @@ LOGGING = {
 }
 
 
+load_dotenv()
+URL = os.environ.get('URL')
+TOKEN = os.environ.get('TOKEN')
+EMAIL = os.environ.get('EMAIL').split(' ')
+
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'djangonorificationservice@gmail.com'
 EMAIL_PORT = 587
