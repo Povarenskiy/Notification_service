@@ -44,14 +44,13 @@ class Client(ModelLogger, models.Model):
 
 class Message(ModelLogger, models.Model):
     """Модель сообщения"""
-
-    SENDING_STATUS_CHOICES = (
-        ('NOT', 'Not sent'),
-        ('YES', 'Sent')
-    )
-    status = models.CharField(max_length=3, choices=SENDING_STATUS_CHOICES, default='NOT', verbose_name='Статус отправки')
     time_creation = models.DateTimeField(auto_now_add=True, verbose_name='Время создания сообщения')
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
     mailing = models.ForeignKey(Mailing, on_delete=models.CASCADE)
 
+    SENDING_STATUS_CHOICES = (
+        (False, 'Not sent'),
+        (True, 'Sent')
+    )
+    status = models.BooleanField(max_length=1, choices=SENDING_STATUS_CHOICES, default=False, verbose_name='Статус отправки')
   

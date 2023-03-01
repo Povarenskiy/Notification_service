@@ -1,10 +1,12 @@
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
 from rest_framework.decorators import action
+from django.db.models import Prefetch, Count, Q
+
 
 from .serializers import *
 from .models import *
-from .services import get_specific_mailing_statistics, get_full_mailing_statistics
+from .services import get_mailing_statistics
 
 
 class MailingView(ModelViewSet):
@@ -15,13 +17,13 @@ class MailingView(ModelViewSet):
     @action(detail=True)
     def stat(self, request, pk):
         """Статистика по конкретной рассылке"""
-        content = get_specific_mailing_statistics(self.get_object())
+        content = get_mailing_statistics(pk)
         return Response(content)
 
     @action(detail=False)
     def fullstat(self, request):
         """Статистика по рассылкам"""
-        content = get_full_mailing_statistics(self.queryset)
+        content = get_mailing_statistics()
         return Response(content)
 
 

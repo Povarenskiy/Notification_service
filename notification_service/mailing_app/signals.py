@@ -2,8 +2,10 @@ import logging
 
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+
 from .models import Mailing, Client, Message
 from .tasks import send_message
+
 
 
 logger = logging.getLogger('mailing_app')
